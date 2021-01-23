@@ -1,12 +1,12 @@
-# Docker Template
-[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/nicholaswilde/template)](https://hub.docker.com/r/nicholaswilde/template)
-[![Docker Pulls](https://img.shields.io/docker/pulls/nicholaswilde/template)](https://hub.docker.com/r/nicholaswilde/template)
-[![GitHub](https://img.shields.io/github/license/nicholaswilde/docker-template)](./LICENSE)
-[![ci](https://github.com/nicholaswilde/docker-template/workflows/ci/badge.svg)](https://github.com/nicholaswilde/docker-template/actions?query=workflow%3Aci)
-[![lint](https://github.com/nicholaswilde/docker-template/workflows/lint/badge.svg?branch=main)](https://github.com/nicholaswilde/docker-template/actions?query=workflow%3Alint)
+# Docker noVNC
+[![Docker Image Version (latest by date)](https://img.shields.io/docker/v/nicholaswilde/novnc)](https://hub.docker.com/r/nicholaswilde/novnc)
+[![Docker Pulls](https://img.shields.io/docker/pulls/nicholaswilde/novnc)](https://hub.docker.com/r/nicholaswilde/novnc)
+[![GitHub](https://img.shields.io/github/license/nicholaswilde/docker-novnc)](./LICENSE)
+[![ci](https://github.com/nicholaswilde/docker-novnc/workflows/ci/badge.svg)](https://github.com/nicholaswilde/docker-novnc/actions?query=workflow%3Aci)
+[![lint](https://github.com/nicholaswilde/docker-novnc/workflows/lint/badge.svg?branch=main)](https://github.com/nicholaswilde/docker-novnc/actions?query=workflow%3Alint)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-A template repo for Docker images.
+A multi-architecture Docker image for [noVNC](https://novnc.com/).
 
 ## Requirements
 - [buildx](https://docs.docker.com/engine/reference/commandline/buildx/)
@@ -17,35 +17,31 @@ A template repo for Docker images.
 ---
 version: "2.1"
 services:
-  template:
-    image: nicholaswilde/template
-    container_name: template
+  novnc:
+    image: nicholaswilde/novnc
+    container_name: novnc
     environment:
       - TZ=America/Los_Angeles #optional
       - PUID=1000   #optional
       - PGID=1000   #optional
     ports:
-      - 3000:3000
+      - 6080:6080
     restart: unless-stopped
     volumes:
       - app:/app
-      - config:/config
-      - defaults:/defaults
 volumes:
   app:
-  config:
-  defaults:
 ```
 ### docker cli
 ```bash
 $ docker run -d \
-  --name=template \
+  --name=novnc \
   -e TZ=America/Los_Angeles `# optional` \
   -e PUID=1000  `# optional` \
   -e PGID=1000   `# optional` \
-  -p 3000:3000 \
+  -p 6080:6080 \
   --restart unless-stopped \
-  nicholaswilde/template
+  nicholaswilde/novnc
 ```
 
 ## Build

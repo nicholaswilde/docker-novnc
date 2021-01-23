@@ -2,16 +2,12 @@
 version: "2.1"
 services:
   installer:
-    image: nicholaswilde/template:latest
-    container_name: template
+    image: nicholaswilde/novnc:latest
+    container_name: novnc
     ports:
-      - 3000:3000
+      - 6080:6080
     restart: unless-stopped
     volumes:
       - app:/app
-      - config:/config
-      - defaults:/defaults
 volumes:
   app:
-  config:
-  defaults:
