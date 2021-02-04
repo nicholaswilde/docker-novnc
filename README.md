@@ -24,6 +24,8 @@ services:
       - TZ=America/Los_Angeles #optional
       - PUID=1000   #optional
       - PGID=1000   #optional
+      - REMOTE_HOST=localhost #optional
+      - REMOTE_PORT=5900 #optional
     ports:
       - 6080:6080
     restart: unless-stopped
@@ -39,6 +41,8 @@ $ docker run -d \
   -e TZ=America/Los_Angeles `# optional` \
   -e PUID=1000  `# optional` \
   -e PGID=1000   `# optional` \
+  -e REMOTE_HOST=localhost `# optional` \
+  -e REMOTE_PORT=5900 `# optional` \
   -p 6080:6080 \
   --restart unless-stopped \
   nicholaswilde/novnc

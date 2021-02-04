@@ -19,6 +19,8 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="nicholaswilde"
+ENV REMOTE_HOST=localhost
+ENV REMOTE_PORT=5900
 WORKDIR /app
 COPY --from=base /noVNC .
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
@@ -36,5 +38,5 @@ RUN \
   echo "**** cleanup ****" && \
   rm -rf /tmp/*
 VOLUME /app
-EXPOSE 6068
-CMD ["bash", "./utils/launch.sh"]
+EXPOSE 6080
+CMD ["sh", "-c", "./utils/launch.sh --vnc ${REMOTE_HOST}:${REMOTE_PORT}"]
