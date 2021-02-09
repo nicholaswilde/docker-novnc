@@ -8,32 +8,11 @@
 
 A multi-architecture Docker image for [noVNC](https://novnc.com/).
 
-## Requirements
-- [buildx](https://docs.docker.com/engine/reference/commandline/buildx/)
+## Dependencies
+
+* None
 
 ## Usage
-### docker-compose
-```
----
-version: "2.1"
-services:
-  novnc:
-    image: nicholaswilde/novnc
-    container_name: novnc
-    environment:
-      - TZ=America/Los_Angeles #optional
-      - PUID=1000   #optional
-      - PGID=1000   #optional
-      - REMOTE_HOST=localhost #optional
-      - REMOTE_PORT=5900 #optional
-    ports:
-      - 6080:6080
-    restart: unless-stopped
-    volumes:
-      - app:/app
-volumes:
-  app:
-```
 ### docker cli
 ```bash
 $ docker run -d \
@@ -47,22 +26,17 @@ $ docker run -d \
   --restart unless-stopped \
   nicholaswilde/novnc
 ```
+### docker-compose
 
-## Build
+See [docker-compose.yaml](./docker-compose.yaml).
 
-Check that you can build the following:
-```bash
-$ docker buildx ls
-NAME/NODE    DRIVER/ENDPOINT             STATUS  PLATFORMS
-mybuilder *  docker-container
-  mybuilder0 unix:///var/run/docker.sock running linux/amd64, linux/arm64, linux/arm/v7
-```
+## Development
 
-If you are having trouble building arm images on a x86 machine, see [this blog post](https://www.docker.com/blog/getting-started-with-docker-for-arm-on-linux/).
+See [Wiki](https://github.com/nicholaswilde/docker-template/wiki/Development).
 
-```
-$ make build
-```
+## Troubleshooting
+
+See [Wiki](https://github.com/nicholaswilde/docker-template/wiki/Troubleshooting).
 
 ## Pre-commit hook
 
