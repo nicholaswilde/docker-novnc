@@ -1,0 +1,19 @@
+---
+port:
+  tcp:6080:
+    listening: true
+    ip:
+      - 0.0.0.0
+
+process:
+  python:
+    running: true
+
+http:
+  http://localhost:6080:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 0
+    body:
+      - <title>Directory listing for /</title>

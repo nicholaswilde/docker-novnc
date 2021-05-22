@@ -4,8 +4,8 @@ ARG WEBSOCKIFY_VERSION=0.9.0
 RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
-    git=2.30.0-r0 \
-    curl=7.74.0-r0 && \
+    git=2.30.2-r0 \
+    curl=7.76.1-r0 && \
   echo "**** cleanup ****" && \
   rm -rf /tmp/* && \
   echo "**** download novnc ****" && \
@@ -31,7 +31,7 @@ RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
     ca-certificates=20191127-r5 \
-    python3=3.8.7-r0 \
+    python3=3.8.10-r0 \
     python2=2.7.18-r1 \
     py2-numpy@community=1.15.4-r0 && \
   chown -R abc:abc /app && \
