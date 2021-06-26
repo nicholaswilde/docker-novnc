@@ -1,11 +1,11 @@
-FROM alpine:3.13.0 as base
+FROM ghcr.io/linuxserver/baseimage-alpine:3.14 as base
 ARG VERSION=1.2.0
 ARG WEBSOCKIFY_VERSION=0.9.0
 RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
-    git=2.30.2-r0 \
-    curl=7.76.1-r0 && \
+    git=2.32.0-r0 \
+    curl=7.77.0-r1 && \
   echo "**** cleanup ****" && \
   rm -rf /tmp/* && \
   echo "**** download novnc ****" && \
@@ -14,7 +14,7 @@ RUN \
   curl --remote-name --time-cond cacert.pem https://curl.se/ca/cacert.pem && \
   mv cacert.pem /noVNC/self.pem
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.13
+FROM ghcr.io/linuxserver/baseimage-alpine:3.14
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
@@ -31,8 +31,8 @@ RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
     ca-certificates=20191127-r5 \
-    python3=3.8.10-r0 \
-    python2=2.7.18-r1 \
+    python3=3.9.5-r1 \
+    python2=2.7.18-r2 \
     py2-numpy@community=1.15.4-r0 && \
   chown -R abc:abc /app && \
   echo "**** cleanup ****" && \
